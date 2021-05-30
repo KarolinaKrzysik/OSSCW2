@@ -17,3 +17,10 @@
    <input type="submit" value="Students Records" name="btnStudentsRecords" />
 
 </form>
+
+<form name = "frmAddNewStudent" action = " addStudent.php" method = "POST">
+
+   Add new students:
+   <input type="submit" value="Add New Student" name="btnAddNewStudent" />
+
+</form>
