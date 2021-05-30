@@ -10,3 +10,10 @@
    <br/>
    <input type="submit" value="Login" name="btnlogin" />
 </form>
+
+<form name = "frmStudentsRecords" action = "students.php" method = "POST">
+
+   See all students:
+   <input type="submit" value="Students Records" name="btnStudentsRecords" />
+
+</form>
