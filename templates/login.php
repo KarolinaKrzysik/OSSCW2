@@ -1,5 +1,9 @@
 
-<?php echo $message; ?>
+<?php 
+   echo template("templates/partials/header.php");
+   echo $message;
+
+?>
 
 <form name="frmLogin" action="authenticate.php" method="post">
    Student ID:
@@ -24,3 +28,8 @@
    <input type="submit" value="Add New Student" name="btnAddNewStudent" />
 
 </form>
+
+<?php
+   echo template("templates/partials/footer.php");
+
+?>
