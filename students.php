@@ -8,12 +8,12 @@
 ?>
 
 <?php
-   $sql = "SELECT studentid, dob, firstname, lastname, house, town, county, country, postcode FROM student";
+   $sql = "SELECT studentid, dob, firstname, lastname, house, town, county, country, postcode, image FROM student";
    $result = mysqli_query($conn, $sql);
 // Confirm that the records are wished to be deleted when the form is submitted
 
   ?>
-   <form name = 'frmCheckboxes' action= 'deleteRecords.php' method = 'POST' 
+   <form name = 'frmCheckboxes' action = 'deleteRecords.php' method = 'POST' 
    onsubmit="return confirm(' Are you sure you want to delete these records?');">
    <?php
      //Make structure of the table, prepare headers
@@ -21,7 +21,7 @@
       $data['content'] .= "<table border='1'>";
       $data['content'] .= "<tr><th colspan='50' align='center'>Students Records</th></tr>";
       $data['content'] .= "<tr><th>Student ID</th><th>DOB</th><th>Firstname</th><th>Lastname</th><th>House</th>
-      <th>Town</th><th>County</th><th>Country</th><th>Postcode</th><th>Choose</th>
+      <th>Town</th><th>County</th><th>Country</th><th>Postcode</th><th>Image</th></th><th>Choose</th>
       </tr>";
       // Display the students in student table
 
@@ -29,6 +29,7 @@
         $data['content'] .= "<td>$row[studentid]</td><td> $row[dob] </td><td> $row[firstname] </td>";
         $data['content'] .= "<td> $row[lastname] </td><td> $row[house] </td><td> $row[town] </td>";
         $data['content'] .= "<td> $row[county] </td><td> $row[country] </td><td> $row[postcode]</td>
+        <td><img src='getjpg.php?studentid=$row[studentid]' height = '100' width = '100'/></td>
         <td><input type='checkbox' id='$row[studentid]' name = 'deleteStudent[]' value='$row[studentid]'>
         <label for='student$counter'></label><br></td>
         </tr>";  
@@ -38,7 +39,6 @@
       echo template("templates/default.php", $data);
       echo "<input onclick='confirmAction()' type='submit' value='Delete Records' name = 'btnDelete'>";
       echo "</form>";
-   
    
    echo template("templates/partials/footer.php");
 

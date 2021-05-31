@@ -29,6 +29,8 @@
    <input type="text" id="country" name="country" placeholder="UK" required><br>
    <label for="postcode">Postcode:</label>
    <input type="text" id="postcode" name="postcode" placeholder="HP 11SX" required><br>
+   <label for="image">Picture:</label>
+   <input type="file" name="image" accept = "image/jpeg" required><br>
    <input type="submit" value="Add Student" name="btnAddNewRecord">
    </form>
 
