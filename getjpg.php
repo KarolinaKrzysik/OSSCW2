@@ -1,8 +1,8 @@
 <?php
 
-    //include("_includes/config.inc");
+    include("_includes/config.inc");
     include("_includes/dbconnect.inc");
-    //include("_includes/functions.inc");
+    include("_includes/functions.inc");
     header("Content-type: image/jpeg");
 
     $sql = "SELECT image FROM student WHERE studentid ='" . $_GET[studentid] ."';";
@@ -13,6 +13,7 @@
     $jpg = $row["image"];
 
     echo $jpg;
+
 
 
 

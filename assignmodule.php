@@ -15,7 +15,9 @@ if (isset($_SESSION['id'])) {
    if (isset($_POST['selmodule'])) {
       $sql = "insert into studentmodules values ('" .  $_SESSION['id'] . "','" . $_POST['selmodule'] . "');";
       $result = mysqli_query($conn, $sql);
-      $data['content'] .= "<p>The module " . $_POST['selmodule'] . " has been assigned to you</p>";
+      $data['content'] .= "<div class='alert alert-success' role='alert'>
+      <p>The module  {$_POST['selmodule']} has been assigned to you</p>
+      </div>";
    }
    else  // If a module has not been selected
    {
@@ -25,18 +27,16 @@ if (isset($_SESSION['id'])) {
      $result = mysqli_query($conn, $sql);
 
      $data['content'] .= "<form name='frmassignmodule' action='' method='post' >";
-     $data['content'] .= "Select a module to assign<br/>";
-     $data['content'] .= "<select name='selmodule' >";
+     $data['content'] .= "<p class='display-5'>Select a module to assign</p>";
+     $data['content'] .= "<select name='selmodule' class='form-select form-select-lg mb-3' >";
      // Display the module name sin a drop down selection box
      while($row = mysqli_fetch_array($result)) {
-        $data['content'] .= "<option value='$row[modulecode]'>$row[name]</option>";
+        $data['content'] .= "<option class='dropdown-item' value='$row[modulecode]'>$row[name]</option>";
      }
      $data['content'] .= "</select><br/>";
-     $data['content'] .= "<input type='submit' name='confirm' value='Save' />";
+     $data['content'] .= "<div><input type='submit' name='confirm' value='Save' class='btn btn-primary btn-lg fixed-bottom'/></div>";
      $data['content'] .= "</form>";
    }
-
-   // render the template
    echo template("templates/default.php", $data);
 
 } else {

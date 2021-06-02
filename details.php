@@ -25,7 +25,9 @@ if (isset($_SESSION['id'])) {
       $sql .= "where studentid = '" . $_SESSION['id'] . "';";
       $result = mysqli_query($conn,$sql);
 
-      $data['content'] = "<p>Your details have been updated</p>";
+      $data['content'] = "<div class='alert alert-success' role='alert'>
+      <p>Your details have been successfuly updated!</p>
+      </div>";
 
    }
    else {
@@ -40,23 +42,23 @@ if (isset($_SESSION['id'])) {
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
 
-   <h2>My Details</h2>
+   <h2 class="display-5">My Details</h2>
    <form name="frmdetails" action="" method="post">
-   First Name :
-   <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
-   Surname :
-   <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="{$row['town']}" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
-   <input type="submit" value="Save" name="submit"/>
+   <p class="form-label" style="font-weight:bold">First Name</p>
+   <input name="txtfirstname" type="text" value="{$row['firstname']}" class="form-control"/><br/>
+   <p class="form-label" style="font-weight:bold">Surname</p>
+   <input name="txtlastname" type="text"  value="{$row['lastname']}" class="form-control"/><br/>
+   <p class="form-label" style="font-weight:bold">Number and Street</p>
+   <input name="txthouse" type="text"  value="{$row['house']}" class="form-control"/><br/>
+   <p class="form-label" style="font-weight:bold">Town</p>
+   <input name="txttown" type="text"  value="{$row['town']}" class="form-control"/><br/>
+   <p class="form-label" style="font-weight:bold">County</p>
+   <input name="txtcounty" type="text"  value="{$row['county']}" class="form-control"/><br/>
+   <p class="form-label" style="font-weight:bold">Country</p>
+   <input name="txtcountry" type="text"  value="{$row['country']}" class="form-control"/><br/>
+   <p class="form-label" style="font-weight:bold">Postcode</p>
+   <input name="txtpostcode" type="text"  value="{$row['postcode']}" class="form-control"/><br/>
+   <input type="submit" value="Save" name="submit" class="btn btn-primary btn-lg "/>
    </form>
 
 EOD;

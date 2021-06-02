@@ -15,16 +15,7 @@
 
 <div class="container">
    <div class="row" class="text-center" class="border border-1">
-      <div class="col-md-4">
-         <h1 class="display-3" style="height:150;">See all students</h1>
-         <form name = "frmStudentsRecords" action = "students.php" method = "POST">
-
-            
-            <input type="submit" value="Students Records" name="btnStudentsRecords" class="btn btn-primary btn-lg mx-auto"/>
-
-         </form>
-      </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
          <h1 class="display-2" style="height:150;">Login</h1>
          <form name="frmLogin" action="authenticate.php" method="post">
             <div class="mb-3">
@@ -39,14 +30,26 @@
             <input type="submit" value="Login" name="btnlogin" class="btn btn-primary btn-lg" />
          </form>
       </div>
-      <div class="col-md-4">
-         <h1 class="display-3" style="height:150;">Add new students</h1>
+      <div class="col-md-6" >
+         <div style="height:197px">
+         <h1 class="display-5" style="height:80px">Add new students</h1>
          <form name = "frmAddNewStudent" action = " addStudent.php" method = "POST">
 
             
             <input type="submit" value="Add New Student" name="btnAddNewStudent" class="btn btn-primary btn-lg "/>
 
          </form>
+         </div>
+         <div class="outside"style="height:197px">
+         
+         <div class="inside">
+            <h1 class="display-5" style="height:80px">See all students</h1>
+            <form name = "frmStudentsRecords" action = "students.php" method = "POST" class="align-bottom">
+            <input type="submit" value="Students Records" name="btnStudentsRecords" class="btn btn-primary btn-lg mx-auto"/>
+
+         </form>
+         </div>
+         </div>
       </div>
    </div>
 
