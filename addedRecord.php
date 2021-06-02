@@ -17,12 +17,25 @@
    $imagedata = addslashes(fread(fopen($_FILES['image']['tmp_name'], "r"), filesize($image)));
     //Hash password to store it securely in the database
    $hashed_password = password_hash($_POST['password1'], PASSWORD_DEFAULT);
+
+   //Ensure input is secure
+   $safestudentidr = mysqli_real_escape_string($conn, $_POST['studentid']);
+   $safepasswordr = mysqli_real_escape_string($conn, $hashed_password);
+   $safedobr = mysqli_real_escape_string($conn, $_POST['dob']);
+   $safefirstnamer = mysqli_real_escape_string($conn, $_POST['firstname']);
+   $safelastnamer = mysqli_real_escape_string($conn, $_POST['lastname']);
+   $safehouser = mysqli_real_escape_string($conn, $_POST['house']);
+   $safetownr = mysqli_real_escape_string($conn, $_POST['town']);
+   $safecountyr = mysqli_real_escape_string($conn, $_POST['county']);
+   $safecountryr = mysqli_real_escape_string($conn, $_POST['country']);
+   $safepostcoder = mysqli_real_escape_string($conn, $_POST['postcode']);
+
     //insert data into the database
     $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house,
       town, county, country, postcode, image)
-      VALUES ($_POST[studentid],'$hashed_password','$_POST[dob]','$_POST[firstname]',
-      '$_POST[lastname]','$_POST[house]','$_POST[town]','$_POST[county]',
-      '$_POST[country]','$_POST[postcode]', '$imagedata');";       
+      VALUES ($safestudentidr,'$safepasswordr','$safedobr','$safefirstnamer',
+      '$safelastnamer','$safehouser','$safetownr','$safecountyr',
+      '$safecountryr','$safepostcoder', '$imagedata');";       
     $result = mysqli_query($conn, $sql);
     //Display alert
     echo "<div class='alert alert-success' role='alert'>

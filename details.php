@@ -7,15 +7,24 @@ if (isset($_SESSION['id'])) {
    echo template("templates/partials/header.php");
    echo template("templates/partials/nav.php");
    // if the form has been submitted
+
+   //Sanitize input fields
+   $safefirstname = mysqli_real_escape_string($conn, $_POST['txtfirstname']);
+   $safelastname = mysqli_real_escape_string($conn, $_POST['txtlastname']);
+   $safehouse = mysqli_real_escape_string($conn, $_POST['txthouse']);
+   $safetown = mysqli_real_escape_string($conn, $_POST['txttown']);
+   $safecounty = mysqli_real_escape_string($conn, $_POST['txtcounty']);
+   $safecountry = mysqli_real_escape_string($conn, $_POST['txtcountry']);
+   $safepostcode = mysqli_real_escape_string($conn, $_POST['txtpostcode']);
    if (isset($_POST['submit'])) {
       // build an sql statment to update the student details
-      $sql = "update student set firstname ='" . $_POST['txtfirstname'] . "',";
-      $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
-      $sql .= "house ='" . $_POST['txthouse']  . "',";
-      $sql .= "town ='" . $_POST['txttown']  . "',";
-      $sql .= "county ='" . $_POST['txtcounty']  . "',";
-      $sql .= "country ='" . $_POST['txtcountry']  . "',";
-      $sql .= "postcode ='" . $_POST['txtpostcode']  . "' ";
+      $sql = "update student set firstname ='$safefirstname',";
+      $sql .= "lastname ='$safelastname',";
+      $sql .= "house ='$safehouse',";
+      $sql .= "town ='$safetown',";
+      $sql .= "county ='$safecounty',";
+      $sql .= "country ='$safecountry',";
+      $sql .= "postcode ='$safepostcode' ";
       $sql .= "where studentid = '" . $_SESSION['id'] . "';";
       $result = mysqli_query($conn,$sql);
       $data['content'] = "<div class='alert alert-success' role='alert'>
