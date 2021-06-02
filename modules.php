@@ -1,21 +1,14 @@
 <?php
-
    include("_includes/config.inc");
    include("_includes/dbconnect.inc");
    include("_includes/functions.inc");
-
-
    // check logged in
    if (isset($_SESSION['id'])) {
-
       echo template("templates/partials/header.php");
       echo template("templates/partials/nav.php");
-
       // Build SQL statment that selects a student's modules
       $sql = "select * from studentmodules sm, module m where m.modulecode = sm.modulecode and sm.studentid = '" . $_SESSION['id'] ."';";
-
       $result = mysqli_query($conn,$sql);
-
       // prepare page content
       $data['content'] .= "<table border='1' class='table table-striped table-light table-hover'>";
       $data['content'] .= "<p class='display-5'>Modules</p>";
@@ -26,14 +19,10 @@
          $data['content'] .= "<td> $row[level] </td></tr>";
       }
       $data['content'] .= "</table>";
-
       // render the template
       echo template("templates/default.php", $data);
-
    } else {
       header("Location: index.php");
    }
-
    echo template("templates/partials/footer.php");
-
 ?>

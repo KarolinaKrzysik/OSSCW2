@@ -12,13 +12,10 @@
    </svg>  Back</a>
 <?php   
    if($_POST["deleteStudent"]){
-
       $messageAfterDalate = "Student records: ";
       foreach ($_POST['deleteStudent'] as $value){
-         
          $sql2 = "DELETE FROM student WHERE studentid = $value";
          $result = mysqli_query($conn, $sql2);
-         
          $messageAfterDalate .= "$value ";
        }
        $messageAfterDalate .= "have been successfuly deleted";
@@ -26,13 +23,8 @@
       <p>$messageAfterDalate!</p>
       </div>";
    }else{
-      $messageAfterDalate = "0 records have been deleted.";
-      echo $messageAfterDalate;
-      $_POST['messageAfterDelete'] = $messageAfterDalate;
       header('Location: http://intweb.bucks.ac.uk/~21904889/CO551OpenSourceSystems/bnu-php-example/students.php');
       exit;
-      
    }
    echo template('templates/partials/footer.php');
-
 ?>
