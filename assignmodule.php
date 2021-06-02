@@ -16,7 +16,7 @@ if (isset($_SESSION['id'])) {
       $sql = "insert into studentmodules values ('" .  $_SESSION['id'] . "','" . $_POST['selmodule'] . "');";
       $result = mysqli_query($conn, $sql);
       $data['content'] .= "<div class='alert alert-success' role='alert'>
-      <p>The module  {$_POST['selmodule']} has been assigned to you</p>
+      <p>The module  {$_POST['selmodule']} has been assigned to you.</p>
       </div>";
    }
    else  // If a module has not been selected
