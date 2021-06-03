@@ -25,6 +25,9 @@ function validateImage(field)
     var sCurExtension = ".jpg";
     var tryme=document.forms["frmAddNewRecord"]["image"].value;
     console.log(tryme);
+    if(!tryme){
+        return "No image was uploaded.\n"
+    }
     if (tryme.length > 0) {
     var blnValid = false;
         if (tryme.substr(tryme.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
@@ -36,7 +39,7 @@ function validateImage(field)
         console.log("NOT ACCEPTED");
         return "Chosen file is invalid. Supported extension: .jpg!\n"
         }
-    }    
+    }  
 }
 //Validate StudentID
 function validateStudentId(field)
